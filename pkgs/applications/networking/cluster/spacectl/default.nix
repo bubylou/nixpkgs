@@ -20,6 +20,12 @@ buildGoModule rec {
     done
   '';
 
+  passthru.tests.version = testers.testVersion {
+    package = spacectl;
+    command = "spacectl version";
+    version = "v${version}";
+  };
+
   meta = with lib; {
     description = "Spacelift client and CLI";
     mainProgram = "spacectl";
